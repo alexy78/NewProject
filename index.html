@@ -13,40 +13,54 @@
   </head>
   <body>
     <div class="weatherWrapper">
+      <div class="container">
+  <div class="row">
+    <div  class="block" style="display:inline-block">
         <form id="change-city"><input
                   type="search"
-                  placeholder="Change a city"
+                  placeholder=""
                   class="form-control"
                   id="cityinput" required/>
-              <div class="col-5">
+
+              <div class="col-9">
                 <input id="search"
                   type="submit"
                   value="Search"
-                  class="btn btn-primary w-100"/>
+                  class="btn btn-primary mb-3"/> 
                 </form>
-                <h1 id="city">Type a city</h1>
+                </div>
+                </div>
+                
                 <h3>
         
                 </h3>
-                <div class="weathertemperature">
-                <img src="" alt="Clear" id="icon" class="float-left" />
+                <h1 id="city"></h1>
+                <div class="temp">
+                 <strong id="temperature">temperature</strong>
+ <span class="units">
+                    <a href="#" id="celsius" class="active">°C</a> |
+                    <a href="#" id="fahrenheit">°F</a></span></div>
+                <span class="info">
+               <div class="weathertemperature">
+                <img src="" alt="Clear" id="icon" class="center" width="150" />
                 </div>
-            
                 <ul>
                     <li><span id="description"></span></li>
                     <li> Humidity:<span id="humidity"></span>%</li>
                     <li> Wind:<span id="wind"></span>km/h</li>
-            
-  <strong id="temperature">temperature</strong>
- <span class="units">
-                    <a href="#" id="celsius" class="active">°C</a> |
-                    <a href="#" id="fahrenheit">°F</a></span>
+                    
+          
   </ul>
+</span>
+
   
             </div>
+            
                 <div class="weather-forecast-temperatures " id="dailyforecast"></div>
-              </div>
+              
             </div>
+          </div>
+           </div>
             <div class="link">
     <a
             href="https://github.com/alexy78/NewProject"

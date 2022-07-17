@@ -88,26 +88,27 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 //
-function currentCity(event) {
-  event.preventDefault();
-  let searchCity = document.querySelector("#cityinput");
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = searchCity.value;
+function search(city) {
   let apiKey = "be3ab8e09c2856ab67e7aa09558d9610";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity.value}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#cityinput");
+  search(cityInputElement.value);
+}
 let form = document.querySelector("#change-city");
-form.addEventListener("submit", currentCity);
+form.addEventListener("submit", handleSubmit);
 function showTemperature(response) {
   let temperature = document.querySelector("#temperature");
   let description = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let icon = document.querySelector("#icon");
-
+  let h1 = document.querySelector("h1");
   celsiusTemperature = response.data.main.temp;
-
+  h1.innerHTML = response.data.name;
   temperature.innerHTML = Math.round(celsiusTemperature);
   description.innerHTML = response.data.weather[0].description;
   humidity.innerHTML = response.data.main.humidity;
@@ -144,3 +145,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+search("Lviv");
